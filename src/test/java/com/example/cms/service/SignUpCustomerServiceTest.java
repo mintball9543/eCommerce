@@ -2,11 +2,11 @@ package com.example.cms.service;
 
 import com.example.cms.domain.SignUpForm;
 import com.example.cms.domain.model.Customer;
+import com.example.cms.service.customer.SignUpCustomerService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.junit.jupiter.api.Assertions;
 
 import java.time.LocalDate;
 
