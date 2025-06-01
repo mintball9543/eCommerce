@@ -2,6 +2,7 @@ package com.example.cms.controller;
 
 import com.example.cms.exception.CustomException;
 import com.example.cms.exception.ErrorCode;
+import jakarta.servlet.ServletException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
