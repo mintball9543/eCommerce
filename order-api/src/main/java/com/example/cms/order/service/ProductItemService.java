@@ -3,6 +3,7 @@ package com.example.cms.order.service;
 import com.example.cms.order.domain.model.Product;
 import com.example.cms.order.domain.model.ProductItem;
 import com.example.cms.order.domain.product.AddProductItemForm;
+import com.example.cms.order.domain.product.UpdateProductItemForm;
 import com.example.cms.order.domain.repository.ProductItemRepository;
 import com.example.cms.order.domain.repository.ProductRepository;
 import com.example.cms.order.exception.CustomException;
@@ -47,5 +48,11 @@ public class ProductItemService {
         return productItem;
     }
 
+    @Transactional
+    public void deleteProductItem(Long sellerId,Long productItemId){
+        ProductItem productItem = productItemRepository.findById(productItemId)
+                .filter(pi->pi.getSellerId().equals(sellerId)).orElseThrow(()->new CustomException(NOT_FOUND_ITEM));
+        productItemRepository.delete(productItem);
+    }
 
 }
