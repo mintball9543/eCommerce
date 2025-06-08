@@ -24,6 +24,11 @@ public class CartService {
         return cart!=null?cart:new Cart();
     }
 
+    public Cart putCart(Long customerId,Cart cart){
+        redisClient.put(customerId,cart);
+        return cart;
+    }
+
     public Cart addCart(Long customerId, AddProductCartForm form) {
 
         Cart cart = redisClient.get(customerId, Cart.class);
