@@ -10,7 +10,9 @@ import com.example.cms.order.service.ProductSearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -35,6 +37,20 @@ public class CartApplication {
             throw new CustomException(ITEM_COUNT_NOT_ENOUGH);
         }
         return cartService.addCart(customerId,form);
+    }
+
+    /**
+     * 엣지 케이스
+     *
+     * @param customerId
+     * @param cart
+     * @return
+     */
+    public Cart updateCart(Long customerId, Cart cart){
+        // 실질적으로 변하는 데이터
+        // 상품의 삭제, 수량 변경
+        cartService.putCart(customerId,cart);
+        return getCart(customerId);
     }
 
     //1. 장바구니에 상품을 추가 했다.
